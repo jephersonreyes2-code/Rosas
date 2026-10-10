@@ -1,0 +1,132 @@
+.flower-petal_8 {
+    top: 50%;
+    left: 10%;
+    border-radius: 0px 100% 50% 100% / 0px 100% 30% 100%;
+    transform: rotate(225deg) scale(1);
+}
+
+.flower-Light {
+    width: 3cqi;
+    aspect-ratio: 1;
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+}
+.flower-Light:nth-child(odd) {
+   background-color: #ffe4a0;
+   filter: blur(2cqi) drop-shadow(0 0 5cqi #ffd85f);
+
+}
+.flower-Light:nth-child(even) {
+   background-color: #ff6236;
+   filter: blur(1cqi) drop-shadow( 8px 8px 5cqi #ff6236);
+}
+/* ...existing code... */
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#32152e, #8e3154, #315b3b);
+}
+
+.flower {
+    position: relative;
+    width: min(70vw, 280px);
+    aspect-ratio: 1;
+    margin: 40px auto;
+    animation: aparecer 1s ease-out both;
+}
+
+.flower [class^="flower-petal_"] {
+    position: absolute;
+    top: 17%;
+    left: 33%;
+    width: 34%;
+    height: 48%;
+    border-radius: 50% 50% 45% 45%;
+    background: linear-gradient(145deg, #ff9ab5, #d51f50 75%);
+    transform: rotate(var(--angle)) scale(0);
+    transform-origin: 50% 85%;
+    animation: abrir-petalo 900ms ease-out both;
+}
+
+.flower-petal_1 { --angle: -157deg; animation-delay: 200ms !important; }
+.flower-petal_2 { --angle: -112deg; animation-delay: 350ms !important; }
+.flower-petal_3 { --angle: -67deg; animation-delay: 500ms !important; }
+.flower-petal_4 { --angle: -22deg; animation-delay: 650ms !important; }
+.flower-petal_5 { --angle: 23deg; animation-delay: 800ms !important; }
+.flower-petal_6 { --angle: 68deg; animation-delay: 950ms !important; }
+.flower-petal_7 { --angle: 113deg; animation-delay: 1100ms !important; }
+.flower-petal_8 { --angle: 158deg; animation-delay: 1250ms !important; }
+
+.flower .flower-Light {
+    position: absolute;
+    z-index: 2;
+    top: 44%;
+    left: 44%;
+    width: 12%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #ffe4a0;
+    box-shadow: 0 0 18px 8px #ffd85f;
+    opacity: 0;
+    animation: brillar 1s ease-in-out 1.8s infinite alternate;
+}
+
+.flower::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 40%;
+    left: 40%;
+    width: 20%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #ffb34d;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes abrir-petalo {
+    to {
+        opacity: 1;
+        transform: rotate(var(--angle)) scale(1);
+    }
+}
+
+@keyframes brillar {
+    from { opacity: 0.3; transform: scale(0.7); }
+    to { opacity: 1; transform: scale(1.2); }
+}
+.garden {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    width: min(100%, 900px);
+    padding: 20px;
+}
+
+.garden .flower {
+    width: min(100%, 220px);
+    margin: 10px auto;
+}
+main {
+    width: 100%;
+}
+
+.garden {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+    box-sizing: border-box;
+}
+/* ...existing code... */
